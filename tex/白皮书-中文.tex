@@ -33,6 +33,14 @@
 \newcommand{\geong}[1]{{\GeongFont #1}}
 % \newcommand{\geong}[1]{{\GeongFont #1}}
 
+% --- 定义无编号脚注命令 ---
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
 % --- 文档信息 ---
 \title{\textbf{匠氏数字白皮书}\\ \large 重构数字符号：一种基于几何拓扑的直观表达系统}
 \author{Mason Geong}
@@ -45,7 +53,7 @@
 \begin{abstract}
 本文提出了一种全新的数字表达系统——匠氏数字（Geong Numerals）。该系统旨在解决传统阿拉伯数字在视觉量感上的抽象性问题，通过结合几何图形的拓扑结构与二五混合进制逻辑（Bi-quinary logic），创造出一套兼具美学价值与算术直观性的符号。本文将详细阐述其设计哲学、排版美学规范、开源实现方案以及在不同进制下的拓展应用。
 \end{abstract}
-\footnote{本文档及匠氏符号逻辑已作为开源知识资产（Open Knowledge Assets）发布。欢迎开发者基于此协议进行二次创作或将其铭刻（Inscribe）于链上。支持与交流地址：\texttt{0x8D274F7ECcb7E3f0E191CFeB2D9954f963436f04}（ETH/Base (L2)）。}
+\blfootnote{本文档及匠氏符号逻辑已作为开源知识资产（Open Knowledge Assets）发布。欢迎开发者基于此协议进行二次创作或将其铭刻（Inscribe）于链上。支持与交流地址：\texttt{0x8D274F7ECcb7E3f0E191CFeB2D9954f963436f04}（ETH/Base (L2)）。}
 \newpage
 \tableofcontents
 \newpage
@@ -162,9 +170,9 @@
 图\ref{fig:add}展示了使用匠氏计数系统在十进制下进行竖式加减法的过程。加减的过程可以通过图形直观地观察而无需记忆加减法表。
 \begin{figure}[H]
     \centering
-    \label{fig:add}
     \includegraphics[width=0.8\textwidth]{a-crop.pdf}
     \caption{使用匠氏计数系统进行竖式加减法}
+    \label{fig:add}
 \end{figure}
 \newpage
 % --- 参考文献部分 ---
