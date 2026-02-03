@@ -1,0 +1,194 @@
+\documentclass[12pt, a4paper]{ctexart}
+
+% --- 宏包引入 ---
+\usepackage{fontspec} % 字体管理
+\usepackage{graphicx} % 插入图片
+\usepackage{geometry} % 页面设置
+\usepackage{amsmath, amssymb} % 数学符号
+\usepackage{booktabs} % 表格美化
+\usepackage{tikz} % 绘图
+\usepackage{hyperref} % 超链接
+\usepackage{float}
+\usepackage{cite} % 优化引用显示
+\usepackage{pifont}
+
+% --- 页面设置 ---
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=3cm}
+
+% --- 链接颜色设置 ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=blue, % 引用数字的颜色
+    pdftitle={Geong Numerals Whitepaper},
+}
+
+% --- 字体设置 (按需开启) ---
+\newfontfamily\GeongFont{GeongNumMono-Regular.ttf}
+% \setmonofont{JetBrains Mono} 
+%\newfontfamily\GeongFont{Geong Mono}
+% 伪命令，实际使用请取消上方注释并修改下方定义
+\newcommand{\geong}[1]{{\GeongFont #1}}
+% \newcommand{\geong}[1]{{\GeongFont #1}}
+
+% --- 文档信息 ---
+\title{\textbf{匠氏数字白皮书}\\ \large 重构数字符号：一种基于几何拓扑的直观表达系统}
+\author{Mason Geong}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+本文提出了一种全新的数字表达系统——匠氏数字（Geong Numerals）。该系统旨在解决传统阿拉伯数字在视觉量感上的抽象性问题，通过结合几何图形的拓扑结构与二五混合进制逻辑（Bi-quinary logic），创造出一套兼具美学价值与算术直观性的符号。本文将详细阐述其设计哲学、排版美学规范、开源实现方案以及在不同进制下的拓展应用。
+\end{abstract}
+\footnote{本文档及匠氏符号逻辑已作为开源知识资产（Open Knowledge Assets）发布。欢迎开发者基于此协议进行二次创作或将其铭刻（Inscribe）于链上。支持与交流地址：\texttt{0x8D274F7ECcb7E3f0E191CFeB2D9954f963436f04}（ETH/Base (L2)）。}
+\newpage
+\tableofcontents
+\newpage
+
+\section{引言}
+
+\subsection{数字符号的直观性困境}
+在人类数字文明中，符号的演变往往在“直观性”与“书写效率”之间权衡。现代通用的阿拉伯数字虽然书写高效，但其字形与数值之间失去了几何联系——符号“4”并不包含“4个单位”的视觉特征。
+
+相比之下，玛雅数字（Mayan numerals）\cite{mayan} 与罗马数字保留了部分累加逻辑，而中国算盘（Suanpan）\cite{suanpan} 则通过位置与数量的结合达到了极致的高效。本文受到电影《异形》（Alien）\cite{alien} 中外星符号工业美学的启发，结合算盘的算理，提出了匠氏（Geong）数字,如表\ref{tab:num}所示。
+
+\subsection{核心逻辑：二五混合制}
+匠氏数字并非简单的五进制系统，而是基于 \textbf{二五混合码（Bi-quinary coded decimal）}\cite{bi-quinary} 的逻辑变体。它保留了十进制的位值制框架，但在单个位数的表达上，采用“5 + n”的结构。这种逻辑使得符号在视觉上即可直接进行无需记忆的加减运算。
+
+\section{符号构造与书写}
+
+\subsection{基础构造}
+匠氏数字由两个核心元素构成：
+\begin{itemize}
+    \item \textbf{核心（Quinary Unit）}：使用圆圈（ $\bigcirc$ ）表示数值 5。
+    \item \textbf{外围（Unary Units）}：使用包围核心的方框（ $\square$ ）线条表示数值 1 至 4。
+\end{itemize}
+这种设计使得 $6 \sim 9$ 成为 $1 \sim 4$ 的“加权”版本，形成了视觉上的对仗。
+
+\subsection{零的哲学表达：空集与禁止}
+在匠氏数字系统中，0 代表绝对的“无”。我们参考数学中的空集符号（$\emptyset$）及交通标识中的“禁止”含义。
+\begin{quote}
+    \textbf{设计规范}：0 的字形由一个圆圈及穿过其中的斜杠构成。斜杠应当在视觉上呈现“不出头”的克制感，或仅保留内部线条，既区别于数字5（$\bigcirc$），也区别于数字4（ $\square$ ）。
+\end{quote}
+
+\subsection{拓扑约束与笔画}
+官方书写建议遵循顺时针原则（上$\rightarrow$右$\rightarrow$下$\rightarrow$左）。但在速记或手写体中，只要满足以下\textbf{拓扑连续性}，即视为合法：
+\begin{itemize}
+    \item \textbf{合法}：笔画必须首尾相连或形成包围趋势（如折线）。
+    \item \textbf{非法}：出现分离的笔画。例如，用平行的上下两横表示2是禁止的，因为这破坏了“方框”的封闭预期。
+\end{itemize}
+
+\begin{table}[H]
+    \centering
+    \caption{匠氏（Geong）数字与阿拉伯数字对照表}
+    \vspace{0.3cm}
+    \label{tab:num}
+    % 定义表格列格式，中间一列专门用 Geong 字体显示
+    \begin{tabular}{c c l}
+        \toprule
+        \textbf{数值} & \textbf{匠氏字形} & \textbf{几何构成} \\
+        \midrule
+        0 & \geong{0} & 空集变体（不出头 $\emptyset$） \\
+        1 & \geong{1} & 单边（上） \\
+        2 & \geong{2} & 双边折线（上+右） \\
+        3 & \geong{3} & 三边折线（上+右+下） \\
+        4 & \geong{4} & 封闭方框 \\
+        5 & \geong{5} & 核心圆 \\
+        6 & \geong{6} & 圆 + 单边 \\
+        7 & \geong{7} & 圆 + 双边 \\
+        8 & \geong{8} & 圆 + 三边 \\
+        9 & \geong{9} & 圆 + 方框 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{字体设计美学指南}
+
+为了适应不同的排版场景，匠氏数字在字体设计上提供了两种风格建议。
+
+\subsection{衬线体风格 (Serif Style)}
+适用于正式文档、文学排版或复古科幻场景。
+\begin{itemize}
+    \item \textbf{连接方式}：线条转角处应采用严谨的\textbf{直角连接（Miter Join）}，强调工业结构感。
+    \item \textbf{装饰细节}：笔画的起止点或转角处可选配\textbf{衬线（Serif）}或微小的\textbf{饰线（Spur）}，类似汉字明体或拉丁字体的衬线脚，以增加阅读的引导性。
+\end{itemize}
+
+\subsection{无衬线体风格 (Sans-serif Style)}
+适用于现代UI界面、屏幕显示或代码编写。
+\begin{itemize}
+    \item \textbf{连接方式}：推荐使用\textbf{圆角连接（Round Join）}，使方框线条呈现流畅的胶囊感。
+    \item \textbf{笔触}：采用等宽线条，末端可做平头或圆头处理，保持极简主义风格。
+\end{itemize}
+
+\section{开源实现：Geong Mono}
+
+为了验证该系统的实用性，我们发布了基于开源字体 \texttt{JetBrains Mono} \cite{jetbrains} 修改制作的字体——\textbf{Geong Mono}。
+
+\subsection{实现细节}
+该字体利用 OpenType 特性或直接替换字形码位（Code Points），将 ASCII 区段的 $0 \sim 9$ 映射为 Geong氏数字符号。
+\begin{itemize}
+    \item \textbf{底本}：JetBrains Mono（一款专为开发者设计的等宽字体）。
+    \item \textbf{修改}：保留了原字体的字母设计，仅重绘了数字区段，确保了在代码环境下的可读性与对齐。
+\end{itemize}
+
+\subsection{获取方式}
+源代码与字体文件已在 GitHub 开源：
+\begin{center}
+    \url{https://github.com/MasonGeong/GeongMono}
+\end{center}
+
+\section{进制拓展：以十六进制为例}
+
+匠氏数字不仅限于十进制，其几何逻辑可以自然拓展至任何进制，下文以十六进制（Hexadecimal）为例。
+
+\subsection{0x 拓展定义}
+在十六进制模式下（前缀 \texttt{\geong{0}x}）：
+\begin{itemize}
+    \item \textbf{中心圆}：代表权重 \textbf{8}（$16 \div 2$）。
+    \item \textbf{外围结构}：由四边形拓展为\textbf{正七边形}，每条边代表 1。
+\end{itemize}
+
+\subsection{几何定向法则}
+对于正七边形这种奇数边多边形，为了统一视觉重心，规定：
+\textbf{底边（Bottom Edge）必须保持水平向右（0度）}。
+这意味着 $0 \sim 7$ 的计数将围绕中心顺时针累加，确保每个数值的几何指向性唯一。
+
+\section{可视化示例}
+图\ref{fig:add}展示了使用匠氏计数系统在十进制下进行竖式加减法的过程。加减的过程可以通过图形直观地观察而无需记忆加减法表。
+\begin{figure}[H]
+    \centering
+    \label{fig:add}
+    \includegraphics[width=0.8\textwidth]{a-crop.pdf}
+    \caption{使用匠氏计数系统进行竖式加减法}
+\end{figure}
+\newpage
+% --- 参考文献部分 ---
+\begin{thebibliography}{99}
+    
+    \bibitem{suanpan}
+    Wikipedia contributors. "Suanpan (Abacus)." \textit{Wikipedia, The Free Encyclopedia}. 
+    \url{https://en.wikipedia.org/wiki/Suanpan}
+    
+    \bibitem{bi-quinary}
+    Wikipedia contributors. "Bi-quinary coded decimal." \textit{Wikipedia, The Free Encyclopedia}. 
+    \url{https://en.wikipedia.org/wiki/Bi-quinary_coded_decimal}
+    
+    \bibitem{mayan}
+    Wikipedia contributors. "Maya numerals." \textit{Wikipedia, The Free Encyclopedia}. 
+    \url{https://en.wikipedia.org/wiki/Maya_numerals}
+    
+    \bibitem{alien}
+    Giger, H. R. \textit{Necronomicon}. Sphinx Verlag, 1977. (Visual inspiration for Alien).
+    
+    \bibitem{jetbrains}
+    JetBrains. "JetBrains Mono: A typeface for developers."
+    \url{https://www.jetbrains.com/lp/mono/}
+    
+\end{thebibliography}
+
+\end{document}
