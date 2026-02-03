@@ -53,8 +53,8 @@ Through graphic combination, you can directly "see" the calculation result:
     Install the font on your OS (Right-click to install on Windows, double-click on macOS).
 3.  **编辑器配置 | IDE Setting**: 在 IDE 设置中，将 `Font Family` 设置为 `'Geong Mono'`。
     In your IDE settings, set the `Font Family` to `'Geong Mono'`.
-4.  **查阅白皮书 | Read the Whitepaper**: 更多设计思路请参考项目内的 `whitepaper.pdf`。
-    For more design philosophy, please refer to the `whitepaper.pdf` in the repository.
+4.  **查阅白皮书 | Read the Whitepaper**: 更多设计思路请参考项目内的 `白皮书-中文.pdf`。
+    For more design philosophy, please refer to the `whitepaper-en.pdf` in the repository.
 
 ---
 
