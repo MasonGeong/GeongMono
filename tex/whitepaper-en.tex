@@ -1,0 +1,196 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- Packages ---
+\usepackage{fontspec} % Font management
+\usepackage{graphicx} % Image insertion
+\usepackage{geometry} % Page layout
+\usepackage{amsmath, amssymb} % Math symbols
+\usepackage{booktabs} % Table aesthetics
+\usepackage{tikz} % Drawing
+\usepackage{hyperref} % Hyperlinks
+\usepackage{float}
+\usepackage{cite} % Citation optimization
+\usepackage{pifont}
+
+% --- Page Layout ---
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=3cm}
+
+% --- Link Colors ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=blue,
+    pdftitle={Geong Numerals Whitepaper},
+}
+
+% --- Font Settings (Enable as needed) ---
+% Note: You need the specific font file in your directory for this to compile correctly.
+\newfontfamily\GeongFont{GeongNumMono-Regular.ttf}
+% \setmonofont{JetBrains Mono} 
+% \newfontfamily\GeongFont{Geong Mono}
+
+% Command definition (Modify the definition below if you don't have the font)
+\newcommand{\geong}[1]{{\GeongFont #1}}
+% Fallback if font is missing:
+% \newcommand{\geong}[1]{\texttt{#1}}
+
+% --- Document Info ---
+\title{\textbf{Geong Numerals Whitepaper}\\ \large Reimagining Digital Symbols: An Intuitive System Based on Geometric Topology}
+\author{Mason Geong}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper proposes a novel numerical expression system—Geong Numerals. This system aims to address the abstract nature of traditional Arabic numerals regarding visual magnitude. By combining the topological structure of geometric shapes with bi-quinary logic, it creates a set of symbols that are both aesthetically pleasing and arithmetically intuitive. This paper details its design philosophy, typographic aesthetic standards, open-source implementation, and extended applications in different bases.
+\end{abstract}
+\footnote{This document and the Geong symbol logic have been released as Open Knowledge Assets. Developers are welcome to create derivative works based on this protocol or Inscribe it on-chain. Support and discussion address: \texttt{0x8D274F7ECcb7E3f0E191CFeB2D9954f963436f04} (ETH/Base (L2)).}
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+\subsection{The Intuitive Dilemma of Numerical Symbols}
+In the evolution of human numerical civilization, symbols often trade off between "intuitiveness" and "writing efficiency." While modern Arabic numerals are highly efficient to write, the connection between their glyphs and numerical values has lost its geometric link—the symbol "4" does not visually contain "4 units" of features.
+
+In contrast, Mayan numerals \cite{mayan} and Roman numerals retain some cumulative logic, while the Chinese Suanpan (Abacus) \cite{suanpan} achieves extreme efficiency through a combination of position and quantity. Inspired by the industrial aesthetics of alien symbols in the movie \textit{Alien} \cite{alien} and the arithmetic logic of the abacus, this paper proposes Geong Numerals, as shown in Table \ref{tab:num}.
+
+\subsection{Core Logic: Bi-quinary System}
+Geong Numerals are not a simple quinary system but a logical variant based on \textbf{Bi-quinary coded decimal} \cite{bi-quinary}. It retains the positional framework of the decimal system but employs a "5 + n" structure for expressing individual digits. This logic allows the symbols to perform addition and subtraction visually without requiring rote memorization.
+
+\section{Symbol Construction and Writing}
+
+\subsection{Basic Construction}
+Geong Numerals consist of two core elements:
+\begin{itemize}
+    \item \textbf{Core (Quinary Unit)}: Uses a circle ($\bigcirc$) to represent the value 5.
+    \item \textbf{Periphery (Unary Units)}: Uses box lines ($\square$) surrounding the core to represent values 1 through 4.
+\end{itemize}
+This design makes $6 \sim 9$ the "weighted" versions of $1 \sim 4$, creating a visual symmetry.
+
+\subsection{Philosophical Expression of Zero: Empty Set and Prohibition}
+In the Geong Numerals system, 0 represents absolute "nothingness." We reference the empty set symbol ($\emptyset$) in mathematics and the "prohibition" meaning in traffic signs.
+\begin{quote}
+    \textbf{Design Standard}: The glyph for 0 consists of a circle and a diagonal slash passing through it. The slash should be visually restrained (non-protruding) or kept strictly within the lines, distinguishing it from both the number 5 ($\bigcirc$) and the number 4 ($\square$).
+\end{quote}
+
+\subsection{Topological Constraints and Strokes}
+Official writing recommendations follow a clockwise principle (Top $\rightarrow$ Right $\rightarrow$ Bottom $\rightarrow$ Left). However, in shorthand or handwriting, it is considered legal as long as it satisfies the following \textbf{topological continuity}:
+\begin{itemize}
+    \item \textbf{Legal}: Strokes must be connected end-to-end or form an enclosing trend (e.g., polylines).
+    \item \textbf{Illegal}: Separated strokes. For example, using two parallel horizontal lines (Top + Bottom) to represent 2 is prohibited because it breaks the closed expectation of the "box."
+\end{itemize}
+
+\begin{table}[H]
+    \centering
+    \caption{Comparison of Geong Numerals and Arabic Numerals}
+    \vspace{0.3cm}
+    \label{tab:num}
+    \begin{tabular}{c c l}
+        \toprule
+        \textbf{Value} & \textbf{Geong Glyph} & \textbf{Geometric Composition} \\
+        \midrule
+        0 & \geong{0} & Empty set variant (Non-protruding $\emptyset$) \\
+        1 & \geong{1} & Single side (Top) \\
+        2 & \geong{2} & Two-sided polyline (Top + Right) \\
+        3 & \geong{3} & Three-sided polyline (Top + Right + Bottom) \\
+        4 & \geong{4} & Closed box \\
+        5 & \geong{5} & Core circle \\
+        6 & \geong{6} & Circle + Single side \\
+        7 & \geong{7} & Circle + Two sides \\
+        8 & \geong{8} & Circle + Three sides \\
+        9 & \geong{9} & Circle + Box \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Typography Design Aesthetics Guide}
+
+To adapt to different typesetting scenarios, Geong Numerals offer two style recommendations in font design.
+
+\subsection{Serif Style}
+Suitable for formal documents, literary typesetting, or retro sci-fi scenarios.
+\begin{itemize}
+    \item \textbf{Joins}: Corners should use rigorous \textbf{Miter Joins} to emphasize industrial structuralism.
+    \item \textbf{Decorative Details}: Start/end points or corners may be equipped with \textbf{Serifs} or tiny \textbf{Spurs}, similar to Mincho or Latin serifs, to enhance reading guidance.
+\end{itemize}
+
+\subsection{Sans-serif Style}
+Suitable for modern UI interfaces, screen displays, or coding.
+\begin{itemize}
+    \item \textbf{Joins}: Recommended to use \textbf{Round Joins}, giving the box lines a smooth capsule-like feel.
+    \item \textbf{Strokes}: Use monoline strokes with flat or rounded terminals to maintain a minimalist style.
+\end{itemize}
+
+\section{Open Source Implementation: Geong Mono}
+
+To verify the practicality of this system, we released \textbf{Geong Mono}, a font modification based on the open-source \texttt{JetBrains Mono} \cite{jetbrains}.
+
+\subsection{Implementation Details}
+This font uses OpenType features or direct glyph code point replacement to map $0 \sim 9$ in the ASCII range to Geong numeral symbols.
+\begin{itemize}
+    \item \textbf{Base}: JetBrains Mono (a monospaced font designed for developers).
+    \item \textbf{Modification}: Retained original letter designs, redrawing only the numeric section to ensure readability and alignment in coding environments.
+\end{itemize}
+
+\subsection{Access}
+Source font file is open-sourced on GitHub:
+\begin{center}
+    \url{https://github.com/MasonGeong/GeongMono}
+\end{center}
+
+\section{Base Extension: Hexadecimal Example}
+
+Geong Numerals are not limited to decimal; their geometric logic can be naturally extended to any base. The following uses Hexadecimal as an example.
+
+\subsection{0x Extension Definition}
+In Hexadecimal mode (prefix \texttt{\geong{0}x}):
+\begin{itemize}
+    \item \textbf{Center Circle}: Represents weight \textbf{8} ($16 \div 2$).
+    \item \textbf{Peripheral Structure}: Expands from a quadrilateral to a \textbf{Regular Heptagon}, where each side represents 1.
+\end{itemize}
+
+\subsection{Geometric Orientation Law}
+For odd-sided polygons like the heptagon, to unify the visual center of gravity, we stipulate:
+\textbf{The Bottom Edge must remain horizontal to the right (0 degrees)}.
+This means the count of $0 \sim 7$ will accumulate clockwise around the center, ensuring unique geometric directionality for each value.
+
+\section{Visualization Examples}
+Figure \ref{fig:add} demonstrates the process of vertical addition and subtraction in decimal using the Geong counting system. The process of addition and subtraction can be observed intuitively through graphics without memorizing addition/subtraction tables.
+\begin{figure}[H]
+    \centering
+    \label{fig:add}
+    \includegraphics[width=0.8\textwidth]{a-crop.pdf}
+    \caption{Vertical addition and subtraction using the Geong counting system}
+\end{figure}
+\newpage
+% --- References ---
+\begin{thebibliography}{99}
+    
+    \bibitem{suanpan}
+    Wikipedia contributors. "Suanpan (Abacus)." \textit{Wikipedia, The Free Encyclopedia}. 
+    \url{https://en.wikipedia.org/wiki/Suanpan}
+    
+    \bibitem{bi-quinary}
+    Wikipedia contributors. "Bi-quinary coded decimal." \textit{Wikipedia, The Free Encyclopedia}. 
+    \url{https://en.wikipedia.org/wiki/Bi-quinary_coded_decimal}
+    
+    \bibitem{mayan}
+    Wikipedia contributors. "Maya numerals." \textit{Wikipedia, The Free Encyclopedia}. 
+    \url{https://en.wikipedia.org/wiki/Maya_numerals}
+    
+    \bibitem{alien}
+    Giger, H. R. \textit{Necronomicon}. Sphinx Verlag, 1977. (Visual inspiration for Alien).
+    
+    \bibitem{jetbrains}
+    JetBrains. "JetBrains Mono: A typeface for developers."
+    \url{https://www.jetbrains.com/lp/mono/}
+    
+\end{thebibliography}
+
+\end{document}
