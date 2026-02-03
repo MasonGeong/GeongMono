@@ -13,8 +13,8 @@ A programming font deeply customized based on **JetBrains Mono**, integrating th
 **Geong Mono** 是对数字表达方式的一次实验性重构。
 **Geong Mono** is an experimental reconstruction of numeral expression.
 
-本字体保留了 JetBrains Mono 优秀的字母设计，但将数字 $0 \sim 9$ 替换为基于几何拓扑与**二五混合进制（Bi-quinary logic）**设计的“匠氏数字”。
-While preserving the excellent letter design of JetBrains Mono, this font replaces digits $0 \sim 9$ with "Geong Numerals" based on geometric topology and **bi-quinary logic**.
+本字体保留了 JetBrains Mono 优秀的字母设计，但将数字 0 ~ 9 替换为基于几何拓扑与**二五混合进制（Bi-quinary logic）**设计的“匠氏数字”。
+While preserving the excellent letter design of JetBrains Mono, this font replaces digits 0 ~ 9 with "Geong Numerals" based on geometric topology and **bi-quinary logic**.
 
 这种设计旨在解决阿拉伯数字在视觉量感上的抽象性，使符号与其数值之间建立几何联系。
 This design aims to resolve the abstract nature of Arabic numerals by establishing a geometric connection between symbols and their values.
