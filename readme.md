@@ -23,8 +23,8 @@ This design aims to resolve the abstract nature of Arabic numerals by establishi
 
 ## ✨ 特性 | Features
 
-*   **直观的几何逻辑 | Intuitive Geometric Logic**: 数字 $1 \sim 4$ 由方框边数构成，$5$ 为中心圆，$6 \sim 9$ 则通过“圆+边”的组合实现视觉对仗。
-    Digits $1 \sim 4$ consist of square edges, $5$ is a central circle, and $6 \sim 9$ achieve visual symmetry through "circle + edge" combinations.
+*   **直观的几何逻辑 | Intuitive Geometric Logic**: 数字 1 ~ 4 由方框边数构成，5 为中心圆，6 ~ 9 则通过“圆+边”的组合实现视觉对仗。
+    Digits 1 ~ 4 consist of square edges, 5 is a central circle, and 6 ~ 9 achieve visual symmetry through "circle + edge" combinations.
 *   **无需记忆的算术 | Visual Arithmetic**: 基于二五混合进制，加减法运算可以通过图形的叠加与拆解直观观察，无需死记硬背。
     Based on bi-quinary logic, addition and subtraction can be observed intuitively through the stacking and dismantling of shapes without rote memorization.
 *   **开发者友好 | Developer Friendly**: 继承了 JetBrains Mono 的等宽特性，完美适配代码编辑器与 IDE。
